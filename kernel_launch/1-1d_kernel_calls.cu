@@ -32,15 +32,16 @@ int main(void)
   // with a different thread
   //@@ Choose some values here, stick to 1D
   int threadsPerBlock = 1024;  // FIXME
-  int blocksPerGrid = floor(N / threadsPerBlock); // 
+  int blocksPerGrid = (N / threadsPerBlock); // 
   std::cout << "Block per grid "  << blocksPerGrid << std::endl;
 
   // Array allocation on device
   //@@ Use cudaMalloc to perform the allocation.
-  int size = N * sizeof(float);
-  int err = cudaMalloc(&d_x, size);
+  size_t size = N * sizeof(float);
+  int err = cudaMalloc((void **) &d_x, size);
   cudaCheckError();
- 
+  std::cout << "cudaMalloc succeed" << std::endl; 
+
   // Initialize the x and y arrays on the device
   const float firstValue = 1.f;
   //@@ Call the fill1D kernel to fill d_x with `firstValue`, see kernels.h for the API
@@ -48,7 +49,8 @@ int main(void)
   // Wait for GPU to finish and check for errors
   cudaDeviceSynchronize();
   cudaCheckError();
-  
+  std::cout << "fill1d succeed" << std::endl;
+
   // Check for errors on device
   float expectedValue = firstValue;
   //@@ Call the check1D kernel to control device memory content, see kernels.h for API
@@ -57,14 +59,16 @@ int main(void)
   //@@ call CUDA device synchronisation function
   cudaDeviceSynchronize();
   cudaCheckError();
+  std::cout << "check1D succeed" << std::endl;
 
   // Copy back the buffer to the host for inspection:
   //@@ Allocate a buffer on the host
   float *h_x = (float*) std::malloc(size);  //FIXME
   //@@ Copy the buffer content from device to host
   //@@ use cudaMemcpy
-  cudaMemcpy(&h_x, &d_x, size, cudaMemcpyHostToDevice);  // FIXME
+  cudaMemcpy(h_x, d_x, size, cudaMemcpyDeviceToHost);  // FIXME
   cudaCheckError();
+  std::cout << "cudaMemcpy succeed" << std::endl;
 
   // Check for errors (all values should be close to `firstValue`)
   std::cout << "First control..." << std::endl;
@@ -90,7 +94,7 @@ int main(void)
 
   // Copy back the buffer to the host for inspection:
   //@@ Copy the buffer content from device to host (reuse previous buffer)
-  h_x = (float*) cudaMemcpy(&h_x, &d_x, size, cudaMemcpyHostToDevice);
+  cudaMemcpy(h_x, d_x, size, cudaMemcpyDeviceToHost);
   cudaCheckError();
 
   // Check for errors (all values should be close to `firstValue+otherValue`)
