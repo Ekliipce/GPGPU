@@ -23,42 +23,50 @@ int main() {
   //@@ Initialize grid and block sizes for later kernel launches.
   //@@ Use as many threads as possible.
   //@@ create 2D grid and blocks, you need to find the right structure to store those sizes
-  //@@ ??? threads(???, ???);
-  //@@ ??? blocks(???,
-  //@@            ???);
+  dim3 threads(32, 32);
+  dim3 blocks(
+    (cols + threads.x - 1) / threads.x,
+    (rows + threads.y - 1) / threads.y
+  );
   size_t pitch;  //< we will store the pitch value in this variable
+  std::cout << "Inititalisation suceed" << std::endl;
 
   // Allocate an 2D buffer with padding
   //@@ use cudaMallocPitch to allocate this buffer
-  //@@ cudaMallocPitch(???);  // FIXME
+  size_t size = cols * rows * sizeof(float);
+  cudaMallocPitch(&d_buffer, &pitch,
+                 cols*sizeof(float), rows);
   printf("Pitch d_buffer: %d\n", pitch);
   cudaCheckError();
+
+  std::cout << "cudaMallocPitch suceed" << std::endl;
 
   // The value we want our buffer to be filled with
   const float value = 5.f;
 
   // Initialize the buffer
   //@@ Call the fill2D kernel to fill d_buffer with `value`, see kernels.h for the API
-  //@@ fillZD<<<???, ???>>>(???);  // FIXME
+  fill2D<<<blocks, threads>>>(d_buffer, value, cols, rows, pitch);
   // Wait for GPU to finish and check for errors
   cudaDeviceSynchronize();
   cudaCheckError();
 
   // Check the content of the buffer on the device
   //@@ Call the check2D kernel to control device memory content, see kernels.h for API
-  //@@ check2D<<<?? ,???>>>(???);  // FIXME
+  check2D<<<blocks, threads>>>(d_buffer, value, cols, rows, pitch);
   
   // Wait for GPU to finish and check for errors
   //@@ call CUDA device synchronisation function
-  //@@ ???
+  cudaDeviceSynchronize();
   cudaCheckError();
 
   // Copy back buffer to host memory for inspection
   //@@ Allocate a buffer on the host
-  //@@ float *h_x = (float*) std::malloc(???);  //FIXME
+  float *host_buffer = (float*) std::malloc(size);  //FIXME
   //@@ Copy the buffer content from device to host
   //@@ use cudaMemcpy2D
-  //@@ cudaMemcpy2D(???);  // FIXME
+  cudaMemcpy2D(host_buffer, cols*sizeof(float), d_buffer, pitch,
+               cols*sizeof(float), rows, cudaMemcpyDeviceToHost);
   cudaCheckError();
 
   // Check for errors
@@ -70,7 +78,7 @@ int main() {
 
   // Clean up
   //@@ free d_buffer using CUDA primitives 
-  //@@ cuda???
+  cudaFree(d_buffer);
   cudaCheckError();
 
   std::free(host_buffer);
