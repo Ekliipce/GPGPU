@@ -1,0 +1,12 @@
+# This is a generated file and its contents are an internal implementation detail.
+# The download step will be re-executed if anything in this file changes.
+# No other meaning or use of this file is supported.
+
+method=url
+command=/nix/store/0s8gvg6nh3d3cbby1hjf69jfb2xdvbvp-cmake-3.25.3/bin/cmake;-P;/afs/cri.epita.fr/user/c/ch/charles-andre.arsenec/u/gpgpu/mandel_on_gpu/build/_deps/cli11-subbuild/cli11-populate-prefix/src/cli11-populate-stamp/download-cli11-populate.cmake;COMMAND;/nix/store/0s8gvg6nh3d3cbby1hjf69jfb2xdvbvp-cmake-3.25.3/bin/cmake;-P;/afs/cri.epita.fr/user/c/ch/charles-andre.arsenec/u/gpgpu/mandel_on_gpu/build/_deps/cli11-subbuild/cli11-populate-prefix/src/cli11-populate-stamp/verify-cli11-populate.cmake;COMMAND;/nix/store/0s8gvg6nh3d3cbby1hjf69jfb2xdvbvp-cmake-3.25.3/bin/cmake;-P;/afs/cri.epita.fr/user/c/ch/charles-andre.arsenec/u/gpgpu/mandel_on_gpu/build/_deps/cli11-subbuild/cli11-populate-prefix/src/cli11-populate-stamp/extract-cli11-populate.cmake
+source_dir=/home/charles-andre.arsenec/afs/gpgpu/mandel_on_gpu/build/_deps/cli11-src
+work_dir=/home/charles-andre.arsenec/afs/gpgpu/mandel_on_gpu/build/_deps
+url(s)=https://github.com/CLIUtils/CLI11/archive/v1.9.1.tar.gz
+hash=
+no_extract=
+

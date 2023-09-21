@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/afs/cri.epita.fr/user/c/ch/charles-andre.arsenec/u/gpgpu/mandel_on_gpu/build/_deps/cli11-subbuild/CMakeFiles/cli11-populate"
+		},
+		{
+			"file" : "/afs/cri.epita.fr/user/c/ch/charles-andre.arsenec/u/gpgpu/mandel_on_gpu/build/_deps/cli11-subbuild/CMakeFiles/cli11-populate.rule"
+		},
+		{
+			"file" : "/afs/cri.epita.fr/user/c/ch/charles-andre.arsenec/u/gpgpu/mandel_on_gpu/build/_deps/cli11-subbuild/CMakeFiles/cli11-populate-complete.rule"
+		},
+		{
+			"file" : "/afs/cri.epita.fr/user/c/ch/charles-andre.arsenec/u/gpgpu/mandel_on_gpu/build/_deps/cli11-subbuild/cli11-populate-prefix/src/cli11-populate-stamp/cli11-populate-build.rule"
+		},
+		{
+			"file" : "/afs/cri.epita.fr/user/c/ch/charles-andre.arsenec/u/gpgpu/mandel_on_gpu/build/_deps/cli11-subbuild/cli11-populate-prefix/src/cli11-populate-stamp/cli11-populate-configure.rule"
+		},
+		{
+			"file" : "/afs/cri.epita.fr/user/c/ch/charles-andre.arsenec/u/gpgpu/mandel_on_gpu/build/_deps/cli11-subbuild/cli11-populate-prefix/src/cli11-populate-stamp/cli11-populate-download.rule"
+		},
+		{
+			"file" : "/afs/cri.epita.fr/user/c/ch/charles-andre.arsenec/u/gpgpu/mandel_on_gpu/build/_deps/cli11-subbuild/cli11-populate-prefix/src/cli11-populate-stamp/cli11-populate-install.rule"
+		},
+		{
+			"file" : "/afs/cri.epita.fr/user/c/ch/charles-andre.arsenec/u/gpgpu/mandel_on_gpu/build/_deps/cli11-subbuild/cli11-populate-prefix/src/cli11-populate-stamp/cli11-populate-mkdir.rule"
+		},
+		{
+			"file" : "/afs/cri.epita.fr/user/c/ch/charles-andre.arsenec/u/gpgpu/mandel_on_gpu/build/_deps/cli11-subbuild/cli11-populate-prefix/src/cli11-populate-stamp/cli11-populate-patch.rule"
+		},
+		{
+			"file" : "/afs/cri.epita.fr/user/c/ch/charles-andre.arsenec/u/gpgpu/mandel_on_gpu/build/_deps/cli11-subbuild/cli11-populate-prefix/src/cli11-populate-stamp/cli11-populate-test.rule"
+		},
+		{
+			"file" : "/afs/cri.epita.fr/user/c/ch/charles-andre.arsenec/u/gpgpu/mandel_on_gpu/build/_deps/cli11-subbuild/cli11-populate-prefix/src/cli11-populate-stamp/cli11-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"cli11-populate"
+		],
+		"name" : "cli11-populate"
+	}
+}
